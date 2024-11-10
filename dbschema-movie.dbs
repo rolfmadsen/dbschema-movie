@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="eduhub" database="Salesforce" id="Salesforce-22bd" >
+	<schema name="Default" >
+		<table name="Account" prior="Tbl" >
+			<column name="name" type="varchar" length="100" jt="12" />
+			<column name="accountId" type="int" jt="4" mandatory="y" />
+			<index name="pk_Account" unique="PRIMARY_KEY" >
+				<column name="accountId" />
+			</index>
+			<fk name="fk_Account_User" to_schema="Default" to_table="User" >
+				<fk_column name="accountId" pk="accountId" />
+			</fk>
+		</table>
+		<table name="User" prior="Tbl" >
+			<column name="name" type="varchar" length="100" jt="12" />
+			<column name="userId" type="int" jt="4" mandatory="y" />
+			<column name="accountId" type="int" jt="4" mandatory="y" />
+			<index name="pk_User" unique="PRIMARY_KEY" >
+				<column name="userId" />
+			</index>
+			<index name="unq_User_accountId" unique="UNIQUE_KEY" >
+				<column name="accountId" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-1bad" show_relation="columns" >
+		<entity schema="Default" name="Account" color="C1D8EE" x="884" y="442" />
+		<entity schema="Default" name="User" color="C1D8EE" x="1258" y="544" />
+		<callout x="51" y="51" pointer="Round" >
+			<comment><![CDATA[This is a layout - a diagram with tools.
+- Create new entities by right-clicking the layout. 
+- Double-click entity headers to edit.
+- For a better understanding of the schema, create multiple layouts.
+- Deploy the model into the database by converting it first to the physical design.]]></comment>
+		</callout>
+	</layout>
+</project>
